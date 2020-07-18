@@ -8,7 +8,7 @@ const API_ENDPOINT =
 
 function* handleFetch() {
 	try {
-		const res = yield call(callApi, 'get', API_ENDPOINT, '/heroes');
+		const res = yield call(callApi, 'GET', API_ENDPOINT, '/heroes');
 		if (res.error) {
 			yield put(fetchError(res.error));
 		} else {

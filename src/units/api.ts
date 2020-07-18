@@ -9,7 +9,7 @@ export async function callApi(
 	const res = await fetch(`${url}/api${path}`, {
 		method,
 		headers: {
-			'content-type': 'application/json',
+			Accept: 'application/json',
 		},
 		body: JSON.stringify(data),
 	});
