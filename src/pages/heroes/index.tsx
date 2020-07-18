@@ -21,11 +21,10 @@ type AllProps = PropsFromDispatch & PropsFromState;
 // process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com';
 
 const HeroesIndexPage: React.FC<AllProps> = (props) => {
-	debugger;
 	const { data, loading, fetchRequest } = props;
 	useEffect(() => {
 		fetchRequest();
-	}, []);
+	}, [fetchRequest]);
 	return (
 		<HeroInfoBox>
 			<table>
@@ -39,12 +38,12 @@ const HeroesIndexPage: React.FC<AllProps> = (props) => {
 			</table>
 			{loading && data.length === 0 && <div>Loading...</div>}
 			{data.map((hero) => (
-				<table>
+				<table key={hero.id}>
 					<tbody>
 						<tr>
 							<td>
 								{hero.id}
-								<Link to={`/heroes/${hero.name}`} />
+								<Link to={`/heroes/${hero.name}`}>{hero.name}</Link>
 							</td>
 							<td>{hero.primary_attr}</td>
 							<td>{hero.attack_type}</td>

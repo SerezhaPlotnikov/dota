@@ -8,11 +8,11 @@ const API_ENDPOINT =
 
 function* handleFetch() {
 	try {
-		const res = yield call(callApi, 'GET', API_ENDPOINT, '/heroes');
-		if (res.error) {
+		const res = yield call(() => callApi(API_ENDPOINT, 'GET', '/heroes'));
+		if (res.length === 0) {
 			yield put(fetchError(res.error));
 		} else {
-			yield put(fetchSuccess(res.data));
+			yield put(fetchSuccess(res));
 		}
 	} catch (err) {
 		if (err instanceof Error && err.stack) {
