@@ -10,7 +10,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
 		<>
 			<div>{title}</div>
 			<Link to='/heroes'>Heroes</Link>
-			<Link to='/heroes'>Heroes</Link>
+			<Link to='/leagues'>Leagues</Link>
 			<Link to='/heroes'>Heroes</Link>
 		</>
 	);

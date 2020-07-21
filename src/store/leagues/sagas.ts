@@ -1,14 +1,14 @@
 import { call, all, fork, put, takeEvery } from 'redux-saga/effects';
 import { callApi } from '../../units/api';
 import { fetchError, fetchSuccess } from './actions';
-import { HeroesActionTypes } from './types';
+import { LeaguesActionTypes } from './types';
 
 const API_ENDPOINT =
 	process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com';
 
 function* handleFetch() {
 	try {
-		const res = yield call(() => callApi(API_ENDPOINT, 'GET', '/heroStats'));
+		const res = yield call(() => callApi(API_ENDPOINT, 'GET', '/leagues'));
 		if (res.length === 0) {
 			yield put(fetchError(res.error));
 		} else {
@@ -24,11 +24,11 @@ function* handleFetch() {
 }
 
 function* watchFetchRequest() {
-	yield takeEvery(HeroesActionTypes.FETCH_REQUEST, handleFetch);
+	yield takeEvery(LeaguesActionTypes.FETCH_REQUEST, handleFetch);
 }
 
-function* heroesSaga() {
+function* leaguesSaga() {
 	yield all([fork(watchFetchRequest)]);
 }
 
-export default heroesSaga;
+export default leaguesSaga;

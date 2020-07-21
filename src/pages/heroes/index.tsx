@@ -17,8 +17,8 @@ interface PropsFromDispatch {
 }
 
 type AllProps = PropsFromDispatch & PropsFromState;
-// const API_ENDPOINT =
-// process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com';
+const API_ENDPOINT =
+	process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com';
 
 const HeroesIndexPage: React.FC<AllProps> = (props) => {
 	const { data, loading, fetchRequest } = props;
@@ -41,12 +41,14 @@ const HeroesIndexPage: React.FC<AllProps> = (props) => {
 				<table key={hero.id}>
 					<tbody>
 						<tr>
+							<td>{hero.localized_name}</td>
+							<td>
+								<img src={API_ENDPOINT + hero.icon} alt={hero.name} />
+							</td>
 							<td>
 								{hero.id}
-								<Link to={`/heroes/${hero.name}`}>{hero.name}</Link>
+								<Link to={`/heroes/${hero.name}`}>{hero.localized_name}</Link>
 							</td>
-							<td>{hero.primary_attr}</td>
-							<td>{hero.attack_type}</td>
 						</tr>
 					</tbody>
 				</table>
