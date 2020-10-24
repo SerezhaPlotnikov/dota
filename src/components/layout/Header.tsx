@@ -1,19 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 interface HeaderProps {
-	title: string;
+  title: string
 }
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
-	return (
-		<>
-			<div>{title}</div>
-			<Link to='/heroes'>Heroes</Link>
-			<Link to='/leagues'>Leagues</Link>
-			<Link to='/heroes'>Heroes</Link>
-		</>
-	);
-};
+  return (
+    <>
+      <div>{title}</div>
+      <Link to='/heroes'>Heroes</Link>
+      <Link to='/leagues'>Leagues</Link>
+      <Link to='/heroes'>Heroes</Link>
+    </>
+  )
+}
 
-export default Header;
+export default Header
