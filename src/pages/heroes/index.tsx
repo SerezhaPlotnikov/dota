@@ -24,7 +24,7 @@ const HeroesIndexPage: React.FC<AllProps> = (props) => {
   const { data, loading, fetchRequest } = props
   useEffect(() => {
     fetchRequest()
-  }, [fetchRequest])
+  }, [])
   return (
     <HeroInfoBox>
       <table>
